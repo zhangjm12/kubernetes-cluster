@@ -104,6 +104,10 @@ bash /vagrant/provision/docker_proxy.sh
 
 systemctl start etcd flanneld docker &
 
+bash /vagrant/provision/kubernetes.sh
+
+systemctl start kube-apiserver kube-controller-manager kube-scheduler kube-proxy kubelet &
+
         SHELL
         s.args = [i, vm_name, ip, ETCD_INITIAL_CLUSTER]    # 脚本中使用 $1, $2, $3... 读取
       end
